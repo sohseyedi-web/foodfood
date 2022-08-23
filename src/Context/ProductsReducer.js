@@ -15,14 +15,14 @@ const productsHandler = (state, action) => {
     }
     case "SORT_NAME": {
       const value = action.nameOptions.value;
-
-      if (value === "") {
-        return productsData;
+      // const products = [...state.data];
+      if (value === "all") {
+        return { ...state, data: productsData };
       } else {
         const updateProduct = productsData.filter(
           (c) => c.category.indexOf(value) >= 0
         );
-        return updateProduct;
+        return { ...state, data: updateProduct };
       }
     }
     case "ADD_ITEM": {
