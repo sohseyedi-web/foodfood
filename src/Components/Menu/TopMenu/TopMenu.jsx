@@ -20,14 +20,21 @@ const TopMenu = ({ dispatch }) => {
   const [range, setRange] = useState("");
   const [name, setName] = useState("");
 
-  const sortHandler = (rangeOptions) => {
-    dispatch({ type: "SORT_PRICE", rangeOptions });
-    setRange(rangeOptions);
+  const searchHandler = (e) => {
+    dispatch({ type: "SEARCH_ITEM", event: e });
+    setSearch(e.target.value);
   };
-  const sortName = (nameOptions) => {
-    dispatch({ type: "SORT_NAME", nameOptions });
-    setName(nameOptions);
+
+  const sortName = (selectOption) => {
+    dispatch({ type: "SORT_NAME", selectOption });
+    dispatch({ type: "SORT_PRICE", selectOption: range });
+    setName(selectOption);
   };
+  const sortHandler = (selectOption) => {
+    dispatch({ type: "SORT_PRICE", selectOption });
+    setRange(selectOption);
+  };
+
   return (
     <div className="menu-container__header">
       <form className="menu-container__header-inputs">
@@ -35,7 +42,7 @@ const TopMenu = ({ dispatch }) => {
           type="text"
           placeholder="جست و جو ..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={searchHandler}
         />
         <span>
           <RiSearch2Line size={32} />
@@ -43,18 +50,18 @@ const TopMenu = ({ dispatch }) => {
       </form>
       <div className="menu-container__header-select">
         <Select
-          options={rangeOptions}
-          placeholder="قیمت ..."
-          value={range}
-          onChange={sortHandler}
-        />
-      </div>
-      <div className="menu-container__header-select">
-        <Select
           options={nameOptions}
           value={name}
           onChange={sortName}
           placeholder="نام ..."
+        />
+      </div>
+      <div className="menu-container__header-select">
+        <Select
+          options={rangeOptions}
+          placeholder="قیمت ..."
+          value={range}
+          onChange={sortHandler}
         />
       </div>
     </div>

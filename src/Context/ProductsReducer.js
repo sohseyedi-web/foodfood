@@ -4,7 +4,7 @@ import productsData from "../Data/Data";
 const productsHandler = (state, action) => {
   switch (action.type) {
     case "SORT_PRICE": {
-      const value = action.rangeOptions.value;
+      const value = action.selectOption.value;
       const products = productsData;
 
       if (value === "lowest") {
@@ -20,7 +20,7 @@ const productsHandler = (state, action) => {
       }
     }
     case "SORT_NAME": {
-      const value = action.nameOptions.value;
+      const value = action.selectOption.value;
       if (value === "all") {
         return { ...state, data: productsData };
       } else {
@@ -76,6 +76,18 @@ const productsHandler = (state, action) => {
         ...state,
         cartItems: filterItem,
       };
+    }
+    case "SEARCH_ITEM": {
+      const value = action.event.target.value;
+
+      if (value === "") {
+        return { ...state, data: productsData };
+      } else {
+        const filterItems = productsData.filter((i) =>
+          i.title.toLowerCase().includes(value.toLowerCase())
+        );
+        return { ...state, data: filterItems };
+      }
     }
 
     default:
