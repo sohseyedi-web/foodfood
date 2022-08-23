@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
 import { RiSearch2Line } from "react-icons/ri";
-import "./TopMenu.scss";
 
 const rangeOptions = [
   { value: "highest", label: "گران ترین" },

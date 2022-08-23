@@ -6,11 +6,16 @@ import { RiHeart3Fill, RiBookmarkLine } from "react-icons/ri";
 
 const Product = ({ product, index }) => {
   const [like, setLike] = useState(null);
+  const [save, setSave] = useState(null);
   const dispatch = useProductsdispatch();
 
   const activeFav = (index) => {
     if (like === index) return setLike(null);
     setLike(index);
+  };
+  const activeSave = (index) => {
+    if (save === index) return setSave(null);
+    setSave(index);
   };
   return (
     <div className="items__box" key={product.id}>
@@ -32,11 +37,11 @@ const Product = ({ product, index }) => {
           </div>
           <div
             className={
-              like === index
-                ? "items__box-detail__love-icon active-icon"
+              save === index
+                ? "items__box-detail__love-icon active-save"
                 : "items__box-detail__love-icon"
             }
-            onClick={() => activeFav(index)}
+            onClick={() => activeSave(index)}
           >
             <RiBookmarkLine size={22} />
           </div>
