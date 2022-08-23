@@ -5,17 +5,22 @@ const productsHandler = (state, action) => {
   switch (action.type) {
     case "SORT_PRICE": {
       const value = action.rangeOptions.value;
-      const products = [...state];
+      const products = productsData;
 
       if (value === "lowest") {
-        return _.orderBy(products, ["price"], ["asc"]);
+        return {
+          ...state,
+          data: _.orderBy(products, ["price"], ["asc"]),
+        };
       } else {
-        return _.orderBy(products, ["price"], ["desc"]);
+        return {
+          ...state,
+          data: _.orderBy(products, ["price"], ["desc"]),
+        };
       }
     }
     case "SORT_NAME": {
       const value = action.nameOptions.value;
-      // const products = [...state.data];
       if (value === "all") {
         return { ...state, data: productsData };
       } else {
