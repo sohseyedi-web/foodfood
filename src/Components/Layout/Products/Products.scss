@@ -1,0 +1,28 @@
+.products {
+  padding: 5rem 0;
+
+  &-container {
+    &__items {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    &__more {
+      text-align: center;
+      padding: 3rem 0 1.5rem 0;
+
+      a {
+        button {
+          width: 250px;
+          height: 40px;
+          border: none;
+          border-radius: 0.3rem;
+          background-color: #df2020;
+          color: #fde4e4;
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}
