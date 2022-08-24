@@ -26,9 +26,9 @@ const TopMenu = ({ dispatch }) => {
 
   const sortName = (selectOption) => {
     dispatch({ type: "SORT_NAME", selectOption });
-    dispatch({ type: "SORT_PRICE", selectOption: range });
     setName(selectOption);
   };
+
   const sortHandler = (selectOption) => {
     dispatch({ type: "SORT_PRICE", selectOption });
     setRange(selectOption);
