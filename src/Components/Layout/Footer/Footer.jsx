@@ -39,7 +39,7 @@ const Footer = () => {
             </a>
           </div>
           <div className="footer-container__left-inputs">
-            <input type="email" placeholder="example@gmail.com" />
+            <input type="email" placeholder="ایمیل خود را وارد کنید" />
             <button>عضویت</button>
           </div>
         </div>
