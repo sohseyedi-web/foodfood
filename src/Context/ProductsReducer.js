@@ -1,5 +1,6 @@
 import _ from "lodash";
 import productsData from "../Data/Data";
+import { toast } from "react-toastify";
 
 const productsHandler = (state, action) => {
   switch (action.type) {
