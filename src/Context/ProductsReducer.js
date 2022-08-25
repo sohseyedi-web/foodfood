@@ -1,6 +1,5 @@
 import _ from "lodash";
 import productsData from "../Data/Data";
-import { toast } from "react-toastify";
 
 const productsHandler = (state, action) => {
   switch (action.type) {
@@ -48,12 +47,13 @@ const productsHandler = (state, action) => {
       return { ...state, cartItems: addItem };
     }
     case "REMOVE_ITEM": {
-      const addItem = [...state.cartItems];
-      const itemIndex = addItem.findIndex((i) => i.id === action.payload.id);
-      const updateCart = { ...addItem[itemIndex] };
+      const item = [...state.cartItems];
+      const itemIndex = item.findIndex((i) => i.id === action.payload.id);
+      const updateCart = { ...item[itemIndex] };
 
       if (updateCart.quantity === 1) {
-        const filterItem = addItem.filter((i) => i.id !== action.payload.id);
+        const filterItem = item.filter((i) => i.id !== action.payload.id);
+
         localStorage.setItem("cartItems", JSON.stringify(filterItem));
         return {
           ...state,
@@ -61,11 +61,12 @@ const productsHandler = (state, action) => {
         };
       } else {
         updateCart.quantity--;
-        addItem[itemIndex] = updateCart;
-        localStorage.setItem("cartItems", JSON.stringify(addItem));
+        item[itemIndex] = updateCart;
+
+        localStorage.setItem("cartItems", JSON.stringify(item));
         return {
           ...state,
-          cartItems: addItem,
+          cartItems: item,
         };
       }
     }

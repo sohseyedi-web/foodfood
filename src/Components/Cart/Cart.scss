@@ -1,5 +1,5 @@
 .cart {
-    padding: 7rem 0;
+    padding: 3rem 0;
   
     &-container {
       display: flex;
@@ -125,22 +125,38 @@
         flex-direction: column;
         &__details {
           width: 100%;
-          padding: 0.2rem 0.5rem;
+          padding: 0.2rem 0.1rem;
           margin-bottom: 3rem;
   
           &-box {
+            display: flex;
+            flex-direction: column;
             &__right {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 100%;
               img {
-                height: 90px;
-                width: 90px;
+                height: 80px;
+                width: 80px;
               }
               &-product {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 font-size: 0.9rem;
+                width: 90%;
+
               }
             }
             &__left {
+              margin-top: .5rem;
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
               button {
-                margin-right: 1.5rem;
+                margin-right: .5rem;
               }
             }
           }

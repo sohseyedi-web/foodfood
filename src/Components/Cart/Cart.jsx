@@ -8,6 +8,7 @@ import {
   useProducts,
   useProductsdispatch,
 } from "./../../Context/ProductsProvider";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const { cartItems } = useProducts();
@@ -22,6 +23,19 @@ const Cart = () => {
     (quantity, total) => quantity + total.quantity,
     0
   );
+
+  const handleAddToCart = (cart) => {
+    dispatch({ type: "ADD_ITEM", payload: cart });
+    toast.success("به سبد خرید اضافه شد");
+  };
+  const handleRemoveToCart = (cart) => {
+    dispatch({ type: "REMOVE_ITEM", payload: cart });
+    toast.warning("از سبد خرید کم شد");
+  };
+  const handleDeleteItem = (cart) => {
+    dispatch({ type: "DELETE_ITEM", payload: cart });
+    toast.error("سفارش حذف شد");
+  };
 
   return (
     <Container>
@@ -48,28 +62,18 @@ const Cart = () => {
                         </div>
                       </div>
                       <div className="cart-container__details-box__left">
-                        <button
-                          onClick={() =>
-                            dispatch({ type: "ADD_ITEM", payload: cart })
-                          }
-                        >
+                        <button onClick={() => handleAddToCart(cart)}>
                           <RiAddLine />
                         </button>
                         <span className="cart-container__details-box__left-quantity">
                           {cart.quantity}
                         </span>
-                        <button
-                          onClick={() =>
-                            dispatch({ type: "REMOVE_ITEM", payload: cart })
-                          }
-                        >
+                        <button onClick={() => handleRemoveToCart(cart)}>
                           <RiSubtractFill />
                         </button>
                         <button
                           className="cart-container__details-box__left-btn"
-                          onClick={() =>
-                            dispatch({ type: "DELETE_ITEM", payload: cart })
-                          }
+                          onClick={() => handleDeleteItem(cart)}
                         >
                           <RiDeleteBin2Line size={28} />
                         </button>

@@ -3,11 +3,17 @@ import { useProductsdispatch } from "../../../Context/ProductsProvider";
 import { comma } from "./../../../utils/comma";
 import "./Product.scss";
 import { RiHeart3Fill, RiBookmarkLine } from "react-icons/ri";
+import { toast } from "react-toastify";
 
 const Product = ({ product, index }) => {
   const [like, setLike] = useState(null);
   const [save, setSave] = useState(null);
   const dispatch = useProductsdispatch();
+
+  const handleAddToCart = () => {
+    dispatch({ type: "ADD_ITEM", payload: product });
+    toast.success("به سبد خرید اضافه شد");
+  };
 
   const activeFav = (index) => {
     if (like === index) return setLike(null);
@@ -49,7 +55,7 @@ const Product = ({ product, index }) => {
       </div>
       <div className="items__box-actions">
         <button
-          onClick={() => dispatch({ type: "ADD_ITEM", payload: product })}
+          onClick={handleAddToCart}
           className={
             product.price === 0
               ? "items__box-actions__btn btn-dis"
