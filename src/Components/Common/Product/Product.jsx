@@ -2,8 +2,13 @@ import { useState } from "react";
 import { useProductsdispatch } from "../../../Context/ProductsProvider";
 import { comma } from "./../../../utils/comma";
 import "./Product.scss";
-import { RiHeart3Fill, RiBookmarkLine } from "react-icons/ri";
-import { toast } from "react-toastify";
+import {
+  RiHeart3Line,
+  RiHeart3Fill,
+  RiBookmarkFill,
+  RiBookmarkLine,
+} from "react-icons/ri";
+import { toast } from "react-hot-toast";
 
 const Product = ({ product, index }) => {
   const [like, setLike] = useState(null);
@@ -39,7 +44,11 @@ const Product = ({ product, index }) => {
             }
             onClick={() => activeFav(index)}
           >
-            <RiHeart3Fill size={22} />
+            {like === index ? (
+              <RiHeart3Fill size={22} />
+            ) : (
+              <RiHeart3Line size={22} />
+            )}
           </div>
           <div
             className={
@@ -49,7 +58,11 @@ const Product = ({ product, index }) => {
             }
             onClick={() => activeSave(index)}
           >
-            <RiBookmarkLine size={22} />
+            {save === index ? (
+              <RiBookmarkFill size={22} />
+            ) : (
+              <RiBookmarkLine size={22} />
+            )}
           </div>
         </div>
       </div>

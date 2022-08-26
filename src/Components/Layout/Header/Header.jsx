@@ -30,7 +30,7 @@ const Header = () => {
               <span>
                 <RiCarLine size={26} />
               </span>
-              <span>هزینه ارسال مجانی</span>
+              <span>هزینه ارسال رایگان</span>
             </div>
             <div className="header-container__details-footer__text">
               <span>

@@ -5,8 +5,7 @@ import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import Menu from "./Components/Menu/Menu";
 import Empty from "./Components/Common/isEmpty/isEmpty";
-import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -19,7 +18,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="*" element={<Empty title={"این صفحه وجود ندارد"} />} />
       </Routes>
-      <ToastContainer/>
+      <Toaster />
     </>
   );
 }

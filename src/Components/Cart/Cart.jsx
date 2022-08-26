@@ -4,11 +4,11 @@ import Empty from "./../Common/isEmpty/isEmpty";
 import { RiDeleteBin2Line, RiAddLine, RiSubtractFill } from "react-icons/ri";
 import { comma } from "./../../utils/comma";
 import Container from "./../../Container/Container";
+import { toast } from "react-hot-toast";
 import {
   useProducts,
   useProductsdispatch,
 } from "./../../Context/ProductsProvider";
-import { toast } from "react-toastify";
 
 const Cart = () => {
   const { cartItems } = useProducts();
@@ -30,7 +30,17 @@ const Cart = () => {
   };
   const handleRemoveToCart = (cart) => {
     dispatch({ type: "REMOVE_ITEM", payload: cart });
-    toast.warning("از سبد خرید کم شد");
+    toast.success("از سبد خرید کم شد", {
+      style: {
+        color: "#df2020",
+        width: "212px",
+        border: "1px solid #df2020",
+      },
+      iconTheme: {
+        primary: "#df2020",
+        secondary: "#FFFAEE",
+      },
+    });
   };
   const handleDeleteItem = (cart) => {
     dispatch({ type: "DELETE_ITEM", payload: cart });
